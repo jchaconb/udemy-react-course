@@ -93,15 +93,15 @@ function Menu() {
 }
 
 function Pizza({ pizza }) {
-  if (pizza.soldOut) return null;
-
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizza.soldOut ? 'sold-out' : ''}`}>
       <img src={pizza.photoName} alt="Pizza Prosciutto" />
       <div>
         <h3>{pizza.name}</h3>
         <p>{pizza.ingredients}</p>
-        <span>{Math.ceil(pizza.price * 1.13)}</span>
+        <span>
+          {pizza.soldOut ? 'SOLD OUT' : Math.ceil(pizza.price * 1.13)}
+        </span>
       </div>
     </li>
   );
