@@ -66,36 +66,38 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
-        name="Pizza Prosciutto"
-        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
-        photoName="pizzas/prosciutto.jpg"
-        prize={10} // This is the way when the prop is NOT a string.
-      />
 
-      <Pizza
-        name="Pizza Funghi"
-        ingredients="Tomato, mozarella, mushrooms, and onion"
-        photoName="pizzas/funghi.jpg"
-        prize={12}
-      />
+      {numPizzas > 0 ? (
+        <ul className="pizzas">
+          {pizzas.map(pizza => (
+            <Pizza pizza={pizza} key={pizza.name} />
+          ))}
+        </ul>
+      ) : (
+        <p>We're still working on our menu. Please come back later.</p>
+      )}
     </main>
   );
 }
 
 function Pizza(props) {
+  if (props.pizza.soldOut) return null;
+
   return (
-    <div className="pizza">
-      <img src={props.photoName} alt="Pizza Prosciutto" />
+    <li className="pizza">
+      <img src={props.pizza.photoName} alt="Pizza Prosciutto" />
       <div>
-        <h3>{props.name}</h3>
-        <p>{props.ingredients}</p>
-        <span>{Math.ceil(props.prize * 1.13)}</span>
+        <h3>{props.pizza.name}</h3>
+        <p>{props.pizza.ingredients}</p>
+        <span>{Math.ceil(props.pizza.price * 1.13)}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
@@ -107,8 +109,24 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently open!
+      {isOpen ? (
+        <Order closeHour={closeHour} />
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00
+        </p>
+      )}
     </footer>
+  );
+}
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>We're open until {props.closeHour}:00</p>
+      <p>Come visit us or order online</p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
