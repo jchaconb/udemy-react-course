@@ -1,10 +1,4 @@
-import { use, useState } from 'react';
-
-const initialItems = [
-  { id: 1, description: 'Passports', quantity: 2, packed: false },
-  { id: 2, description: 'Socks', quantity: 12, packed: false },
-  { id: 3, description: 'Charger', quantity: 1, packed: true },
-];
+import { useState } from 'react';
 
 export default function App() {
   const [items, setItems] = useState([]);
@@ -25,6 +19,14 @@ export default function App() {
     );
   }
 
+  function handleClearList() {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete all items?'
+    );
+
+    if (confirmed) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -33,6 +35,7 @@ export default function App() {
         items={items}
         onDeleteItems={handleDeleteItem}
         onToggleItems={handleToggleItem}
+        onClearList={handleClearList}
       />
       <Stats items={items} />
     </div>
@@ -84,7 +87,7 @@ function Form({ onAddIems }) {
   );
 }
 
-function ParckingList({ items, onDeleteItems, onToggleItems }) {
+function ParckingList({ items, onDeleteItems, onToggleItems, onClearList }) {
   const [sortBy, setSortBy] = useState('input');
 
   let sortedItems;
@@ -125,6 +128,7 @@ function ParckingList({ items, onDeleteItems, onToggleItems }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={onClearList}>Clear List</button>
       </div>
     </div>
   );
