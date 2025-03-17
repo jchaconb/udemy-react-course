@@ -52,42 +52,53 @@ const average = arr =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
 
 export default function App() {
+  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState(tempMovieData);
   const [watched, setWatched] = useState(tempWatchedData);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const query = 'interstellar';
+  useEffect(
+    function () {
+      async function fetchMovies() {
+        try {
+          setIsLoading(true);
+          setError('');
 
-  useEffect(function () {
-    async function fetchMovies() {
-      try {
-        setIsLoading(true);
-        const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
-        const res = await fetch(URL);
+          const URL = `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`;
+          const res = await fetch(URL);
 
-        if (!res.ok)
-          throw new Error('Something went wrong with fetching movies');
+          if (!res.ok)
+            throw new Error('Something went wrong with fetching movies');
 
-        const data = await res.json();
+          const data = await res.json();
 
-        if (data.Response === 'False') throw new Error('Movie not found');
+          if (data.Response === 'False') throw new Error('Movie not found');
 
-        setMovies(data.Search);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
+          setMovies(data.Search);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setIsLoading(false);
+        }
       }
-    }
-    fetchMovies();
-  }, []);
+
+      if (query.length < 3) {
+        setMovies([]);
+        setError('');
+        return;
+      }
+
+      fetchMovies();
+    },
+    [query]
+  );
 
   return (
     <>
       <NavBar>
         <Logo />
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </NavBar>
       <Main movies={movies}>
@@ -132,7 +143,7 @@ function Main({ children }) {
 function NumResults({ movies }) {
   return (
     <p className="num-results">
-      Found <strong>{movies?.length}</strong> results
+      Found <strong>{movies.length}</strong> results
     </p>
   );
 }
@@ -146,9 +157,7 @@ function Logo() {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState('');
-
+function Search({ query, setQuery }) {
   return (
     <input
       className="search"
