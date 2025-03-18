@@ -60,6 +60,14 @@ export default function MovieDetails({ selectedId, onCloseMovie, onAddWatched, w
     [selectedId]
   );
 
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie | ${title}`;
+    },
+    [title]
+  );
+
   return (
     <div className="details">
       {isLoading ? (
