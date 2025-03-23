@@ -1,9 +1,5 @@
 function Pricing() {
-  return (
-    <div>
-      Pricing
-    </div>
-  )
+  return <div>Pricing</div>;
 }
 
 export default Pricing
