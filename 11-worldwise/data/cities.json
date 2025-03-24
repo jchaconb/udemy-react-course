@@ -35,6 +35,30 @@
         "lng": 13.376933665713324
       },
       "id": 98443197
+    },
+    {
+      "cityName": "Barcelona",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2027-09-10T14:35:22.456Z",
+      "notes": "Beautiful architecture!",
+      "position": {
+        "lat": 41.3873974,
+        "lng": 2.168568
+      },
+      "id": 25678943
+    },
+    {
+      "cityName": "Munich",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2027-05-20T10:15:30.789Z",
+      "notes": "Great beer and culture! 🍻",
+      "position": {
+        "lat": 48.1351253,
+        "lng": 11.5819806
+      },
+      "id": 67483215
     }
   ]
 }
