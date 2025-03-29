@@ -1,18 +1,6 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
       "cityName": "Mostoles",
       "country": "Spain",
       "emoji": "🇪🇸",
@@ -71,6 +59,30 @@
         "lng": "-76.20117187500001"
       },
       "id": 73930391
+    },
+    {
+      "cityName": "Vila de Rei",
+      "country": "Portugal",
+      "emoji": "🇵🇹",
+      "date": "2025-03-29T12:38:02.812Z",
+      "notes": "",
+      "position": {
+        "lat": "39.65645604812829",
+        "lng": "-8.173828125000002"
+      },
+      "id": 73930392
+    },
+    {
+      "cityName": "Fuenlabrada de los Montes",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2025-03-29T12:38:16.328Z",
+      "notes": "",
+      "position": {
+        "lat": "39.18117526158749",
+        "lng": "-4.94384765625"
+      },
+      "id": 73930393
     }
   ]
 }
