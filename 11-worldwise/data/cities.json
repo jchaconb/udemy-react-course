@@ -13,52 +13,64 @@
       "id": 73930385
     },
     {
-      "cityName": "Madrid",
+      "cityName": "Mostoles",
       "country": "Spain",
       "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
+      "date": "2025-03-29T01:00:02.094Z",
       "notes": "",
       "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
+        "lat": "40.329795743702064",
+        "lng": "-3.8671875000000004"
       },
-      "id": 17806751
+      "id": 73930386
     },
     {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
+      "cityName": "Tchirozerine",
+      "country": "Niger (the)",
+      "emoji": "🇳🇪",
+      "date": "2025-03-29T01:00:09.419Z",
+      "notes": "",
       "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
+        "lat": "17.644022027872726",
+        "lng": "8.085937500000002"
       },
-      "id": 98443197
+      "id": 73930387
     },
     {
-      "cityName": "Barcelona",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-09-10T14:35:22.456Z",
-      "notes": "Beautiful architecture!",
+      "cityName": "San Lorenzo",
+      "country": "Costa Rica",
+      "emoji": "🇨🇷",
+      "date": "2025-03-29T01:01:13.749Z",
+      "notes": "",
       "position": {
-        "lat": 41.3873974,
-        "lng": 2.168568
+        "lat": "10.31491928581316",
+        "lng": "-84.63867187500001"
       },
-      "id": 25678943
+      "id": 73930388
     },
     {
-      "cityName": "Munich",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-05-20T10:15:30.789Z",
-      "notes": "Great beer and culture! 🍻",
+      "cityName": "Melchor de Mencos",
+      "country": "Guatemala",
+      "emoji": "🇬🇹",
+      "date": "2025-03-29T01:01:21.520Z",
+      "notes": "",
       "position": {
-        "lat": 48.1351253,
-        "lng": 11.5819806
+        "lat": "16.88865978738161",
+        "lng": "-89.384765625"
       },
-      "id": 67483215
+      "id": 73930389
+    },
+    {
+      "cityName": "Caynarachi",
+      "country": "Peru",
+      "emoji": "🇵🇪",
+      "date": "2025-03-29T01:02:00.360Z",
+      "notes": "",
+      "position": {
+        "lat": "-6.315298538330033",
+        "lng": "-76.20117187500001"
+      },
+      "id": 73930391
     }
   ]
 }
