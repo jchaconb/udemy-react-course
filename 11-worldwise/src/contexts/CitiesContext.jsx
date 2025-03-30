@@ -1,10 +1,6 @@
-import {
-  createContext,
-  useEffect,
-  useState,
-  useContext,
-  useReducer,
-} from 'react';
+import { createContext, useEffect, useContext, useReducer } from 'react';
+
+import citiesData from './../cities.json';
 
 const BASE_URL = 'http://localhost:8000';
 
@@ -55,9 +51,11 @@ function CitiesProvider({ children }) {
       dispatch({ type: 'loading' });
 
       try {
-        const res = await fetch(`${BASE_URL}/cities`);
-        const data = await res.json();
-        dispatch({ type: 'cities/loaded', payload: data });
+        // const res = await fetch(`${BASE_URL}/cities`);
+        // const data = await res.json();
+        // dispatch({ type: 'cities/loaded', payload: data });
+
+        dispatch({ type: 'cities/loaded', payload: citiesData.cities });
       } catch (err) {
         dispatch({
           type: 'rejected',
@@ -75,9 +73,14 @@ function CitiesProvider({ children }) {
     dispatch({ type: 'loading' });
 
     try {
-      const res = await fetch(`${BASE_URL}/cities/${id}`);
-      const data = await res.json();
-      dispatch({ type: 'city/loaded', payload: data });
+      // const res = await fetch(`${BASE_URL}/cities/${id}`);
+      // const data = await res.json();
+      // dispatch({ type: 'city/loaded', payload: data });
+
+      dispatch({
+        type: 'city/loaded',
+        payload: cities.find(city => city.id === Number(id)),
+      });
     } catch (err) {
       dispatch({
         type: 'rejected',
@@ -89,16 +92,24 @@ function CitiesProvider({ children }) {
   async function createCity(newCity) {
     dispatch({ type: 'loading' });
     try {
-      const res = await fetch(`${BASE_URL}/cities`, {
-        method: 'POST',
-        body: JSON.stringify(newCity),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
+      // const res = await fetch(`${BASE_URL}/cities`, {
+      //   method: 'POST',
+      //   body: JSON.stringify(newCity),
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      // });
+      // const data = await res.json();
+      // dispatch({ type: 'city/created', payload: data });
 
-      dispatch({ type: 'city/created', payload: data });
+      console.log(JSON.parse(JSON.stringify({ ...newCity, id: 1 })));
+
+      const id = Math.floor(1000000000 + Math.random() * 9000000000);
+      dispatch({
+        type: 'city/created',
+        payload: JSON.parse(JSON.stringify({ ...newCity, id: id })),
+      });
+      console.log(cities);
     } catch (err) {
       dispatch({
         type: 'rejected',
@@ -110,9 +121,9 @@ function CitiesProvider({ children }) {
   async function deleteCity(id) {
     dispatch({ type: 'loading' });
     try {
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: 'DELETE',
-      });
+      // await fetch(`${BASE_URL}/cities/${id}`, {
+      //   method: 'DELETE',
+      // });
 
       dispatch({ type: 'city/deleted', payload: id });
     } catch (err) {

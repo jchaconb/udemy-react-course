@@ -31,11 +31,10 @@ function Form() {
   const [isLoadingGeocoding, setIsLoadingGeocoding] = useState(false);
   const [cityName, setCityName] = useState('');
   const [country, setCountry] = useState('');
-  const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');
   const [emoji, setEmoji] = useState('');
   const [geocodingError, setGeocodingError] = useState('');
-  const [startDate, setStartDate] = useState(new Date());
+  const [date, setDate] = useState(new Date());
 
   const { createCity, isLoading } = useCities();
 
@@ -122,8 +121,8 @@ function Form() {
 
         <DatePicker
           id="date"
-          selected={startDate}
-          onChange={date => setStartDate(date)}
+          selected={date}
+          onChange={date => setDate(date)}
           dateFormat="dd/MM/yyyy"
         />
       </div>
