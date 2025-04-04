@@ -13,6 +13,7 @@ const accountSlice = createSlice({
   reducers: {
     deposit(state, action) {
       state.balance += action.payload;
+      state.isLoading = false;
     },
     withdraw(state, action) {
       state.balance -= action.payload;
@@ -27,7 +28,6 @@ const accountSlice = createSlice({
       reducer(state, action) {
         if (state.loan > 0) return;
 
-        console.log(action);
         state.loan = action.payload.amount;
         state.loanPurpose = action.payload.purpose;
         state.balance += action.payload.amount;
@@ -39,46 +39,13 @@ const accountSlice = createSlice({
       state.loanPurpose = '';
       state.loan = 0;
     },
+    convertingCurrency(state, action) {
+      state.isLoading = true;
+    },
   },
 });
 
-/*
-function accountReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'account/deposit':
-      return {
-        ...state,
-        balance: state.balance + action.payload,
-        isLoading: false,
-      };
-    case 'account/withdraw':
-      return { ...state, balance: state.balance - action.payload };
-    case 'account/requestLoan':
-      if (state.loan > 0) return state;
-      return {
-        ...state,
-        loan: action.payload.amount,
-        loanPurpose: action.payload.purpose,
-        balance: state.balance + action.payload.amount,
-      };
-    case 'account/payLoan':
-      return {
-        ...state,
-        balance: state.balance - state.loan,
-        loan: 0,
-        loanPurpose: '',
-      };
-    case 'account/convertingCurrency':
-      return {
-        ...state,
-        isLoading: true,
-      };
-    default:
-      return state;
-  }
-}
-
-function deposit(amount, currency) {
+export function deposit(amount, currency) {
   if (currency === 'USD')
     return {
       type: 'account/deposit',
@@ -99,21 +66,6 @@ function deposit(amount, currency) {
   };
 }
 
-const withdraw = amount => ({ type: 'account/withdraw', payload: amount });
-
-const requestLoan = (amount, purpose) => ({
-  type: 'account/requestLoan',
-  payload: { amount, purpose },
-});
-
-const payLoan = () => ({ type: 'account/payLoan' });
-
-export default accountReducer;
-export { deposit, withdraw, requestLoan, payLoan };
-*/
-
-console.log(accountSlice);
-
-export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+export const { withdraw, requestLoan, payLoan } = accountSlice.actions;
 
 export default accountSlice.reducer;
