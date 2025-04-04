@@ -1,3 +1,5 @@
 npm create vite@4
   > React
   > Javascript 
+
+npm i eslint vite-plugin-eslint eslint-config-react-app --save-dev 
