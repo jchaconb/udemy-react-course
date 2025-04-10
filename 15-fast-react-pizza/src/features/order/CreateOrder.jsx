@@ -1,11 +1,11 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
 import { createOrder } from '../../services/apiRestaurant';
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = str =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str
+    str,
   );
 
 const fakeCart = [
@@ -43,7 +43,7 @@ function CreateOrder() {
 
   return (
     <div>
-      <h2>Ready to order? Let's go!</h2>
+      <h2>Ready to order? Let&apos;s go!</h2>
 
       <Form method="POST">
         <div>
@@ -62,12 +62,18 @@ function CreateOrder() {
         <div>
           <label>Address</label>
           <div>
-            <input className="bg-white" type="text" name="address" required />
+            <input
+              className="w-full rounded-full border border-stone-200 bg-white px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 md:px-6 md:py-3"
+              type="text"
+              name="address"
+              required
+            />
           </div>
         </div>
 
         <div>
           <input
+            className="h-6 w-6 accent-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
             type="checkbox"
             name="priority"
             id="priority"
@@ -109,9 +115,9 @@ export async function action({ request }) {
 
   if (Object.keys(errors).length > 0) return errors;
 
-  // const newOrder = await createOrder(order);
+  const newOrder = await createOrder(order);
 
-  // return redirect(`/order/${newOrder.id}`);
+  return redirect(`/order/${newOrder.id}`);
 }
 
 export default CreateOrder;
