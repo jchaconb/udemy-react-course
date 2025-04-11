@@ -18,7 +18,6 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: [],
   rules: {
-
     'react/prop-types': 'off',
   },
 };

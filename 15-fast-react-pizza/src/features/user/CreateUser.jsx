@@ -18,13 +18,13 @@ function CreateUser() {
         type="text"
         placeholder="Your full name"
         value={username}
-        onChange={e => setUsername(e.target.value)}
+        onChange={(e) => setUsername(e.target.value)}
         className="mb-8 w-72 rounded-full border border-stone-200 bg-white px-4 py-2 text-sm transition-all duration-300 placeholder:text-stone-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 md:px-6 md:py-3"
       />
 
       {username !== '' && (
         <div>
-          <Button>Start ordering</Button>
+          <Button type="primary">Start ordering</Button>
         </div>
       )}
     </form>
