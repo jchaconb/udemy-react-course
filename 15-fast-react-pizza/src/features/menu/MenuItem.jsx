@@ -1,6 +1,8 @@
-import { formatCurrency } from '../../utils/helpers';
-import Button from '../../ui/Button'
 import { useDispatch } from 'react-redux';
+
+import { formatCurrency } from '../../utils/helpers';
+
+import Button from '../../ui/Button';
 import { addItem } from '../cart/cartSlice';
 
 function MenuItem({ pizza }) {
