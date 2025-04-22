@@ -41,8 +41,8 @@ function CabinTable() {
   if (isLoading) return <Spinner />;
 
   return (
-    <Table as="table">
-      <TableHeader as="row">
+    <Table role="table">
+      <TableHeader role="row">
         <div></div>
         <div>Cabin</div>
         <div>Capacity</div>

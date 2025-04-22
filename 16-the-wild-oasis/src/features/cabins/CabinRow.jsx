@@ -69,7 +69,7 @@ function CabinRow({ cabin }) {
   });
 
   return (
-    <TableRow as="row">
+    <TableRow role="row">
       <Img src={image} />
       <Cabin>{name}</Cabin>
       <div>Fits up to {maxCapacity} guests</div>
