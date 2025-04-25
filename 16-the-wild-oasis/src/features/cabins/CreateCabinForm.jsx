@@ -13,7 +13,6 @@ import FormRow from '../../ui/FormRow';
 function CreateCabinForm({ cabinToEdit = {} }) {
   const { isCreating, createCabin } = useCreateCabin();
   const { isEditing, editCabin } = useEditCabin();
-  const { errors } = formState;
 
   const isWorking = isCreating || isEditing;
 
@@ -22,6 +21,7 @@ function CreateCabinForm({ cabinToEdit = {} }) {
   const { register, handleSubmit, reset, getValues, formState } = useForm({
     defaultValues: isEditSession ? editValues : {},
   });
+  const { errors } = formState;
 
   function onSubmit(data) {
     const image = typeof data.image === 'string' ? data.image : data.image[0];
