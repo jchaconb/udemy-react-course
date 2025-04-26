@@ -19,8 +19,6 @@ function UpdateSettingsForm() {
 
   const { isUpdating, updateSetting } = useUpdateSetting();
 
-  console.log(isUpdating);
-
   if (isLoading) return <Spinner />;
 
   function handleUpdate(e, field) {
