@@ -1,4 +1,4 @@
-import { SUPABASE_URL } from '../../secrets';
+import { SUPABASE_URL } from '../utils/constants';
 
 const imageUrl = `${SUPABASE_URL}/storage/v1/object/public/cabin-images/`;
 
